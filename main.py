@@ -15,10 +15,14 @@
 # limitations under the License.
 #
 import webapp2
-from views import MainPage, Scraper, Listings
+from main_page import FrontPage
+from listings import Listings
+from scraper import Scraper
+from admin_console import Admin
 	
 app = webapp2.WSGIApplication([
-    ('/', MainPage),
+    ('/', FrontPage),
     ('/scraper', Scraper),
     ('/listings', Listings),
+    ('/admin', Admin),
 ], debug=True)
