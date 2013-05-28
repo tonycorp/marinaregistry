@@ -42,10 +42,12 @@ LISTINGS_HTML_TOP ="""
 				<th>Item</th>
 				<th>Price</th>
 				<th>On Sale</th>
+				<th>Website</th>
 			</tr>"""
 
 LISTINGS_ROW = """
 			<tr>
+				<td>%s</td>
 				<td>%s</td>
 				<td>%s</td>
 				<td>%s</td>
@@ -58,7 +60,7 @@ LISTING_HTML_BOTTOM = """
 </html>"""
 
 def website_key(website_name):
-	return ndb.Key('Website', website_name)
+	return ndb.Key(Website, website_name)
 
 class MainPage(webapp2.RequestHandler):
 	def get(self):
@@ -70,7 +72,8 @@ class MainPage(webapp2.RequestHandler):
 
 class Scraper(webapp2.RequestHandler):
     def post(self):
-    	registry_item = Item(parent=website_key(self.request.get('website')))
+    	registry_item = Item()
+    	registry_item.website = self.request.get('website')
     	url = urlfetch.fetch(self.request.get('content'))
         doc = lxml.html.fromstring(url.content)
 
@@ -101,5 +104,5 @@ class Listings(webapp2.RequestHandler):
 			if item.sale is not None:
 				price = item.sale
 				on_sale = 'Yes'
-			self.response.write(LISTINGS_ROW % (image, item.title, price, on_sale))
+			self.response.write(LISTINGS_ROW % (image, item.title, price, on_sale, item.website))
 		self.response.write(LISTING_HTML_BOTTOM)
