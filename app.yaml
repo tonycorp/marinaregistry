@@ -9,6 +9,14 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
+- url: /admin
+  script: main.app
+  login: admin
+  auth_fail_action: unauthorized
+
+- url: /listings
+  script: main.app
+
 - url: /.*
   script: main.app
 
