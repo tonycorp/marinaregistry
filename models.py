@@ -5,6 +5,8 @@ class Item(ndb.Model):
 	img = ndb.StringProperty()
 	price = ndb.StringProperty()
 	sale = ndb.StringProperty()
+	category = ndb.StringProperty()
+	for_who = ndb.StringProperty()
 
 class URL(ndb.Model):
 	url = ndb.StringProperty()

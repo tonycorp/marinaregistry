@@ -10,5 +10,5 @@ class FrontPage(webapp2.RequestHandler):
 			greeting = ('<a href=\"%s\">Sign in or register</a>' % users.create_login_url('/'))
 
 		self.response.write('<html><head><p>%s</p></head>' % greeting)
-		self.response.write('<body><a href="./admin">Admin Console</a>')
+		self.response.write('<body><a href="./admin">Admin Console</a></br>')
 		self.response.write('<a href="./listings">Listings</a></body></html>')

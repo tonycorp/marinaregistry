@@ -35,6 +35,8 @@ class Scraper(webapp2.RequestHandler):
       if price.get('class') == 'reg-price':
         registry_item.price = price.text.encode('utf-8').replace("Reg.", "")
     
+    registry_item.category = self.request.get('category')
+    registry_item.for_who = self.request.get('for_who')
     registry_item.put()
 
     link = URL.get_by_id(item_id)
