@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+	<head>
+		<script src="http://code.jquery.com/jquery-1.7.1.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$("#catPicker").change(function(){
+				var select = $(this).val()
+
+				if (select == "new"){
+					$("#newCategory").show();
+				} else {
+					$("#newCategory").hide();
+				}
+			});
+		});
+		</script>
+		<style type="text/css" media="screen">
+			body {background: #222; padding: 1em; margin: 0; font-size: 16px; color: #777;}
+			body * {margin: 0; padding: 0; font-family: helvetica, sans-serif;}
+			p {margin: 0 0 1em; font-size: 14px;}
+			 
+			input, textarea, select{
+			   	border: 1px solid #111;
+			   	padding: 0.5em;
+			   	font-size: 15px;
+			 	line-height: 1.2em;
+			 	width: 80%;
+			 	background: #444;
+			 	color: #fff;
+		 		font-family: helvetica, sans-serif;
+			 	background: -webkit-gradient(linear, left top, left bottom, from(#222), to(#444));
+			 	-webkit-appearance: none;
+				-webkit-box-shadow: 1px 1px 1px #333;
+			}
+			 
+			input:focus, textarea:focus, select:focus {outline-color: #c00;}
+			 
+			textarea {
+				height: 55px;
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #222), color-stop(0.05, #333));
+			}
+			 
+			input[type=text] {
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #222), color-stop(0.12, #333));
+			}
+
+			input[type=submit] {
+				 width: auto;
+				 padding: 0.25em 1em;
+				 line-height: 1.5em;
+				 background: -webkit-gradient(linear, left top, left bottom, from(#a00), to(#600));
+				 text-shadow: 0 0 2px #300;
+				 font-weight: bold;
+				 -webkit-box-shadow: 1px 1px 3px #000;
+				 margin-right: 0.5em;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="/scraper" method="post">
+			<p>
+				<select name="website">
+					<option value="Canadian Tire">Canadian Tire</option>
+					<option value="new">Create New Option</option>
+				</select>
+			</p>
+  			<p>
+				<select name="for_who">
+					<option value="him">Yuri</option>
+					<option value="her">Marina</option>
+					<option value="both">The Couple</option>
+				</select>
+			</p>
+			<p>
+				<select id="catPicker" name="category">
+					<option value="bedroom">Bedroom</option>
+					<option value="kitchen">Kitchen</option>
+					<option value="outside">Outside</option>
+					<option value="misc">Miscellaneous</option>
+					<option value="new">Create New Category</option>
+				</select>
+				<p><input type="text" id="newCategory" name="newCat" hidden="true" placeholder="New Category"></p>
+  			</p>
+			<p>
+				<textarea name="content" placeholder="Website URL"></textarea>
+  			</p>
+  			<p>
+	  			<input type="submit" value="Add Item">
+      		</p>
+      	</form>
+    </body>
+</html>
+{% endautoescape %}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+	<head>
+		<p>
+		{% if user %}
+			Welcome, {{ user.nickname() }}! <a href="{{ logout }}">(Sign Out)</a>
+		{% else %}
+			<a href="{{ login }}">Sign in or Register</a>
+		{% endif %}
+		</p>
+	</head>
+	<body>
+		<a href="./admin">Admin Console</a>
+		</br>
+		<a href="./listings">Listings</a>
+	</body>
+</html>
+{% endautoescape %}
