@@ -12,5 +12,5 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 class Listings(webapp2.RequestHandler):
 	def get(self):
 		template_values = {'items' : Item.query(),} 	
-		template = JINJA_ENVIRONMENT.get_template('templates/listings.html')
+		template = JINJA_ENVIRONMENT.get_template('listings.html')
 		self.response.write(template.render(template_values))

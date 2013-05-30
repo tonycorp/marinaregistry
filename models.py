@@ -7,6 +7,8 @@ class Item(ndb.Model):
 	sale = ndb.StringProperty()
 	category = ndb.StringProperty()
 	for_who = ndb.StringProperty()
+	status = ndb.StringProperty()
+	gifter = ndb.UserProperty()
 
 class URL(ndb.Model):
 	url = ndb.StringProperty()

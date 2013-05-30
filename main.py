@@ -17,12 +17,14 @@
 import webapp2
 from main_page import FrontPage
 from listings import Listings
-from scraper import Scraper
+#from scraper import Scraper
 from admin_console import Admin
+from send_email import SendMail
 	
 app = webapp2.WSGIApplication([
     ('/', FrontPage),
-    ('/scraper', Scraper),
+    #('/scraper', Scraper),
     ('/listings', Listings),
     ('/admin', Admin),
+    ('/send_email', SendMail),
 ], debug=True)
