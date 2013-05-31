@@ -16,15 +16,19 @@
 #
 import webapp2
 from main_page import FrontPage
-from listings import Listings
-#from scraper import Scraper
+from scrape_page import ScrapePage
 from admin_console import Admin
 from send_email import SendMail
+from yuri_listings import YuriList
+from marina_listings import MarinaList
+from both_listings import BothList
 	
 app = webapp2.WSGIApplication([
     ('/', FrontPage),
-    #('/scraper', Scraper),
-    ('/listings', Listings),
+    ('/scrape_page', ScrapePage),
     ('/admin', Admin),
     ('/send_email', SendMail),
+    ('/yuri', YuriList),
+    ('/marina', MarinaList),
+    ('/both', BothList),
 ], debug=True)

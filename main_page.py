@@ -68,6 +68,12 @@ class FrontPage(webapp2.RequestHandler):
 			'years' : years,
 			'months' : months,
 			'weeks' : weeks,
-			'days' : days,} 	
+			'days' : days,
+			'user_is_admin' : 'Yes' if users.is_current_user_admin() else 'No',}
+
+		template = JINJA_ENVIRONMENT.get_template('header.html')
+		self.response.write(template.render()) 	
 		template = JINJA_ENVIRONMENT.get_template('index.html')
 		self.response.write(template.render(template_values))
+		template = JINJA_ENVIRONMENT.get_template('footer.html')
+		self.response.write(template.render())

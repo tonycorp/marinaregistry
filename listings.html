@@ -1,38 +1,47 @@
-<!DOCTYPE html>
 {% autoescape true %}
-<html lang = "en">
-	<head>
-    	<meta charset = "UTF-8" />
-    	<style type = "text/css">
-    		table, td, th {
-      			border: 1px solid black;
-    		} 
-    	</style>
-  	</head>
-	<body>
-		<table>
-			<tr>
-				<th>Image</th>
-				<th>Item</th>
-				<th>Price</th>
-				<th>On Sale</th>
-				<th>Website</th>
-			</tr>
-			{% for item in items %}
-			<tr>
-				<td><img src={{ item.img }}/></td>
-				<td>{{ item.title }}</td>
-				{% if item.sale %}
-				<td>{{ item.sale }}</td>
-				<td><p><b>Yes</b></p></td>
-				{% else %}
-				<td>{{ item.price }}</td>
-				<td><p><b>No</b></p></td>
-				{% endif %}
-				<td>{{ item.key.parent().string_id() }}</td>
-			{% endfor %}
-			</tr>
-		</table>
-	</body>
-</html>
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+
+				<!-- Main -->
+					<div id="main" class="container">
+						<div class="row">
+						
+							<!-- Content -->
+								<div id="content" class="12u skel-cell-mainContent">
+
+									<!-- Post -->
+										{% for item in items %}
+										<article class="is-excerpt">
+											<header>
+												<h2>Behold! This is the <strong>no sidebar</strong> layout<br />
+												with no sidebar at all!</h2>
+											</header>
+											<span class="image image-left"><img src="{{ item.img }}" alt="" /></span>
+											<h3>{{ item.title.replace(' | Canadian Tire', '') }}</h3>
+											<p>
+												From {{ item.key.parent().string_id() }}
+												</br>
+												{% if item.sale %}
+													On Sale: <a class="icon icon-ok-circle">for</a><b>{{ item.sale }}</b> | Regular: {{ item.price}}
+												{% else %}
+													On Sale: <a class="icon icon-remove-circle"> </a> | Regular: {{ item.price }}
+												{% endif %}
+												</br>
+												{% if status == 'Purchased' %}
+													<a class="icon icon-star"><span>This item has been purchased</span></a>
+												{% elif status == 'Reserved' %}
+													<a class="icon icon-star-half-full"><span>This item has been reserved</span></a>
+												{% else %}
+													<a class="icon icon-star-empty"><span>&nbsp This item is up for grabs</span></a>
+												{% endif %}
+											</p>
+										</article>
+										{% endfor %}
+								
+								</div>
+								
+						</div>
+					</div>
+
+			</div>
 {% endautoescape %}

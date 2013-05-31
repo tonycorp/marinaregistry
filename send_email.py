@@ -5,15 +5,20 @@ from google.appengine.api import users
 class SendMail(webapp2.RequestHandler):
 
 	def post(self):
-		user = users.get_current_user()
-		if user is None:
-			login_url = users.create_login_url(self.request.path)
-			self.redirect(login_url)
-			return
+		name = self.request.get('name')
+		body = self.request.get('message')
 
-		message = mail.EmailMessage()
-		message.sender = user.email()
-		message.to = 'Tarantini Zirianov <tarantinizirianov@gmail.com>'
-		message.subject = self.request.get('subject')
-		message.body = self.request.get('message')
-		message.send()
+		if name and body:
+			message = mail.EmailMessage()
+			message.sender = 'Tarantini Zirianov <tarantinizirianov@gmail.com>'
+			message.to = 'Tarantini Zirianov <tarantinizirianov@gmail.com>'
+			message.subject = 'New message from: ' + name
+			message.body = body
+			message.send()
+			self.response.out.write('The lovers have been notified')
+		elif name and  not body:
+			self.response.out.write('C\'mon ' + name + ', I know you got something to say')
+		elif body and not name:
+			self.response.out.write('Sorry, but the owners don\'t like anonymity')
+		else:
+			self.response.out.write('Seriously, are you even trying? Do you not know how email works?')

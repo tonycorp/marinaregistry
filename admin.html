@@ -1,0 +1,98 @@
+{% autoescape true %}
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+
+				<!-- Main -->
+					<div id="main" class="container">
+						<div class="row">
+						
+							<!-- Content -->
+								<div id="content" class="12u skel-cell-mainContent">
+
+									<!-- Post -->
+										<article class="is-post">
+											<header>
+												<h2>Enter a URL and behold!</h2>
+											</header>
+											<div id="urlForm" class="row">
+												<div class="6u">
+													<section>
+														<form id="scrapePageForm" method="post" action="#">
+															<div class="row">
+																<div class="12u">
+																	<textarea id="scrapeURL" name="url" placeholder="URL"></textarea>
+																</div>
+															</div>
+															<div class="row">
+																<div class="12u">
+																	<a id="scrapePageButton" class="button button-icon icon icon-cogs">Scrape Page</a>
+																</div>
+															</div>
+														</form>
+													</section>
+												</div>
+											</div>
+											<div id="addItem" class="row" hidden="true">
+												<div class="6u">
+													<section>
+														<img id="itemPic" src=""></img>
+														<form id="addItemForm" method="post" action="#">
+															<div class="row" hidden="true">
+																<div class="12u">
+																	<textarea id="itemURL" name="itemURL"></textarea>
+																</div>
+															</div>
+															<div class="row" hidden="true">
+																<div class="12u">
+																	<textarea id="picURL" name="picURL"></textarea>
+																</div>
+															</div>
+															<div class="row">
+																<div class="18u">
+																	<textarea id="itemDesc" name="itemDesc" placeholder="Item Description"></textarea>
+																</div>
+															</div>
+															<div class="row">
+																<div class="6u">
+																	<select name="category">
+																		<option value="bedroom">Bedroom</option>
+																		<option value="kitchen">Kitchen</option>
+																		<option value="outside">Outside</option>
+																		<option value="misc">Miscellaneous</option>
+																	</select>
+																</div>
+																<div class="6u">
+																	<select name="for_who">
+																		<option value="him">Yuri</option>
+																		<option value="her">Marina</option>
+																		<option value="both">The Couple</option>
+																	</select>
+																</div>
+																<div class="6u">
+																	<select name="status">
+																		<option value="1">Available</option>
+																		<option value="2">Reserved</option>
+																		<option value="3">Purchased</option>
+																	</select>
+																</div>
+															</div>
+															<div class="row">
+															</div>
+															<div class="row">
+																<div class="12u">
+																	<a id="addItemButton" class="button button-icon icon icon-cogs">Add Item</a>
+																</div>
+															</div>
+														</form>
+													</section>
+												</div>
+											</div>
+										</article>
+								
+								</div>
+								
+						</div>
+					</div>
+
+			</div>
+{% endautoescape %}

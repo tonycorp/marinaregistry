@@ -9,6 +9,7 @@ class Item(ndb.Model):
 	for_who = ndb.StringProperty()
 	status = ndb.StringProperty()
 	gifter = ndb.UserProperty()
+	description = ndb.TextProperty()
 
 class URL(ndb.Model):
 	url = ndb.StringProperty()

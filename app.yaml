@@ -20,8 +20,7 @@ handlers:
 
 - url: /admin
   script: main.app
-  login: admin
-  auth_fail_action: unauthorized
+  login: required
 
 - url: /.*
   script: main.app
